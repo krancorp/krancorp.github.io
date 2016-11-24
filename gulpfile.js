@@ -11,7 +11,7 @@ gulp.task('build', ['pug'])
 
 gulp.task('publish', ['build'], () => {
 	return gulp.src('./dist/**/*')
-		.pipe(ghPages({branch: 'master'}))
+		.pipe(ghPages({branch: 'master', force: true}))
 })
 
 gulp.task('pug', () => {
