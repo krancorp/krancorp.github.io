@@ -27,6 +27,7 @@ gulp.task('sass', () => {
 })
 
 gulp.task('copy', () => {
-  return gulp.src(['./src/CNAME', '.gitignore', './src/**/*.?(png|ico)'], {base: './src'})
+  gulp.src('.gitignore').pipe(gulp.dest('./dist'))
+  return gulp.src(['./src/CNAME', './src/**/*.?(png|ico)'], {base: './src'})
     .pipe(gulp.dest('./dist'))
 })
