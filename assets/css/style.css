@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+html,
+body {
+  height: 100vh; }
+
+body {
+  display: flex;
+  flex-direction: column; }
+
+.logo {
+  margin: auto;
+  width: 225px; }
