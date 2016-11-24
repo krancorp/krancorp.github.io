@@ -15,7 +15,7 @@ gulp.task('publish', ['build'], () => {
 })
 
 gulp.task('pug', () => {
-	return gulp.src('src/**/*.pug', {base: './'})
+	return gulp.src('./src/**/*.pug', {base: './src'})
 		.pipe(pug())
 		.pipe(gulp.dest('./dist'))
 })
