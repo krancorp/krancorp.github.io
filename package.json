@@ -18,7 +18,7 @@
   "homepage": "https://github.com/krancorp/krancorp.github.io#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-build-branch": "^0.1.4",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-pug": "^3.1.0",
     "gulp-sass": "^2.3.2"
   }
