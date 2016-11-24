@@ -7,7 +7,7 @@ const ghPages = require('gulp-gh-pages')
 
 gulp.task('default', ['build'])
 
-gulp.task('build', ['pug', 'sass'])
+gulp.task('build', ['pug', 'sass', 'copy'])
 
 gulp.task('publish', ['build'], () => {
 	return gulp.src('./dist/**/*')
@@ -24,4 +24,9 @@ gulp.task('sass', () => {
 	return gulp.src('./src/assets/css/style.scss')
 		.pipe(sass())
 		.pipe(gulp.dest('./dist/assets/css'))
+})
+
+gulp.task('copy', () => {
+  return gulp.src('./src/CNAME')
+    .pipe(gulp.dest('./dist'))
 })
