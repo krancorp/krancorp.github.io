@@ -23,9 +23,11 @@
     "gulp-babel": "^6.1.2",
     "gulp-gh-pages": "github:shinnn/gulp-gh-pages#33bad35c59e15b538678b49617860e84a73e9d76",
     "gulp-pug": "^3.1.0",
-    "gulp-sass": "^2.3.2"
+    "gulp-sass": "^2.3.2",
+    "gulp-util": "^3.0.7"
   },
   "dependencies": {
-    "jquery": "^3.1.1"
+    "jquery": "^3.1.1",
+    "two.js": "^0.6.0"
   }
 }
