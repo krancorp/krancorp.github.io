@@ -21,7 +21,7 @@ gulp.task('pug', () => {
 })
 
 gulp.task('sass', () => {
-	return gulp.src('./src/assets/css/style.scss')
+	return gulp.src('./src/assets/sass/style.scss')
 		.pipe(sass())
 		.pipe(gulp.dest('./dist/assets/css'))
 })
