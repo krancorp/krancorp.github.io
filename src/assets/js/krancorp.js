@@ -2,100 +2,65 @@
 
 $(document).ready(() => {
 
-  const stripCount = 50
-  const stripSpeed = 5
-
   const canvas = $('#header-background')
-  /*const context = canvas[0].getContext('2d');
 
-  canvas.attr('height', canvas.parent().height())
-  canvas.attr('width', canvas.parent().width())
-
-  const kPath = new Path2D('M 0.6969913,104.86304 29.701197,75.858833 70.761098,116.91876 71.51322,34.046835 105.18852,0.37153475 104.28595,107.80225 l 118.956,-0.52476 -36.31209,36.31209 -89.047256,0.45494 44.296046,44.29611 -29.00421,29.00421 L 0.69853504,104.86888 Z')
-
-  var strips = []
-
-  context.scale(.1, .1)
-
-  for (var i = 0; i < stripCount; i++) {
-    strips.push({x: Math.random()*canvas.width(), y: Math.random()*200, v: Math.random()})
-  }
-
-  drawFrame()
-
-  function drawStrip(i) {
-    var strip = strips[i]
-    //console.log(strip)
-
-    context.fillStyle = '#fff'
-    kPath.moveTo(strip.x, strip.y)
-    context.fill(kPath)
-    //context.fillRect(strip.x, strip.y, 10, 10)
-
-    strip.y += strip.v * stripSpeed
-  }
-
-  function drawFrame() {
-    console.log('Frame!!')
-    context.clearRect(0,0,canvas.width(), canvas.height())
-
-    for (var i = 0; i < stripCount; i++) drawStrip(i)
-
-    setTimeout(drawFrame, 100)
-
-    const kPath = new Path2D('M 0.6969913,104.86304 29.701197,75.858833 70.761098,116.91876 71.51322,34.046835 105.18852,0.37153475 104.28595,107.80225 l 118.956,-0.52476 -36.31209,36.31209 -89.047256,0.45494 44.296046,44.29611 -29.00421,29.00421 L 0.69853504,104.86888 Z')
-  }*/
-
-  var params = {
+  const two = new Two({
     height: canvas.height(),
     width: canvas.width()
-  }
-  var two = new Two(params).appendTo(canvas[0])
+  }).appendTo(canvas[0])
+
+  const kSize = 34
+  const stripPadding = kSize
+  const stripLength = 7
+
+  const stripMinSpeed = 30
+  const stripSpeed = 50
+
+  const stripCount = Math.ceil(canvas.width() / kSize)
 
   var kPath = createKPath()
-
-  kPath.fill = '#444'
-  kPath.translation = new Two.Vector(0, 0)
+  kPath.translation.set(-100, 0)
 
   var strips = []
   var stripPaths = []
-
+  // Populate strips
   for (var i = 0; i < stripCount; i++) {
-    strips.push({x: Math.random()*canvas.width(), y: Math.random()*200, v: Math.random()})
-    stripPaths.push(kPath.clone())
+    strips.push({x: (i * kSize + kSize/2), y: -Math.floor(Math.random()*canvas.height()/kSize/2) * kSize + kSize/2, v: randomVelocity()})
+
+    // Create K Paths
+    var ks = []
+    for (var j = 0; j < stripLength; j++) {
+      var k = kPath.clone()
+      k.fill = 'rgba(255,255,255,'+0.15/j+')'
+      ks.push(k)
+    }
+    ks[0].fill = 'rgba(255,255,255,0.25)'
+
+    stripPaths.push(ks)
   }
 
   kPath.remove()
-
-  console.log(stripPaths)
-
-  function draw() {
-    for (var i = 0; i < stripCount; i++) {
-      //console.log(i)
-      var strip = strips[i];
-      var path = stripPaths[i];
-      //console.log(strip)
-      //console.log(path)
-      path.translation = new Two.Vector(strip.x, strip.y)
-
-      strip.y += 30
-    }
-
-    two.update()
-    setTimeout(draw, 1000)
-  }
-  //draw()
 
   two.bind('update', frameCount => {
     for (var i = 0; i < stripCount; i++) {
       //console.log(i)
       var strip = strips[i];
-      var path = stripPaths[i];
-      //console.log(strip)
-      //console.log(path)
-      path.translation = new Two.Vector(strip.x, strip.y)
+      if (frameCount % strip.v === 0) {
+        var paths = stripPaths[i];
 
-      strip.y += 3
+        for (var j = stripLength-1; j >= 0; j--) {
+          paths[j].translation.set(strip.x, strip.y - j*stripPadding)
+        }
+        //console.log(strip)
+        //console.log(path)
+        //path.translation.set(strip.x, strip.y)
+
+        strip.y += stripPadding
+        if (strip.y > canvas.height() + stripLength*kSize) {
+          strip.y = kSize/2
+          strip.v = randomVelocity()
+        }
+      }
     }
   }).play()
 
@@ -103,5 +68,9 @@ $(document).ready(() => {
     var path = two.makePath(0, 105, 30, 76, 70, 117, 71, 34, 105, 1, 104, 108, 223, 107, 186, 144, 98, 144, 142, 188, 113, 217)
     path.scale = 0.15
     return path
+  }
+
+  function randomVelocity() {
+    return Math.floor(Math.random()*stripSpeed)+stripMinSpeed
   }
 })
