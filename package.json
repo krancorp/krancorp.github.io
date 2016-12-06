@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/krancorp/krancorp.github.io#readme",
   "devDependencies": {
+    "babel-preset-latest": "^6.16.0",
+    "browser-sync": "^2.18.2",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
     "gulp-gh-pages": "github:shinnn/gulp-gh-pages#33bad35c59e15b538678b49617860e84a73e9d76",
     "gulp-pug": "^3.1.0",
     "gulp-sass": "^2.3.2"
