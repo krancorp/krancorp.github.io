@@ -1,9 +1,10 @@
 'use strict';
 
-const gulp = require('gulp')
-const pug  = require('gulp-pug')
-const sass = require('gulp-sass')
-const ghPages = require('gulp-gh-pages')
+const gulp        = require('gulp')
+const pug         = require('gulp-pug')
+const sass        = require('gulp-sass')
+const ghPages     = require('gulp-gh-pages')
+const browserSync = require('browser-sync').create()
 
 const PATH = {
   npm: './node_modules',
@@ -14,9 +15,11 @@ const PATH = {
 
 const GLOB = {
   publish: PATH.dist + '/**/*',
-  pug: './src/**/!(_)*.pug',
+  pug: PATH.src + '/**/!(_)*.pug',
+  pugWatch: PATH.src + '/**/*.pug',
   sass: PATH.assets + '/sass/style.scss',
-  copy: ['./src/CNAME', './src/**/*.?(png|ico)']
+  sassWatch: PATH.assets + '/sass/**/*.scss',
+  copy: ['./src/CNAME', './src/**/*.?(png|ico|js)']
 }
 
 const DEST = {
@@ -29,6 +32,16 @@ const LIBS = [
 ]
 
 gulp.task('default', ['build'])
+
+gulp.task('watch', () => {
+
+  browserSync.init({
+    server: './dist'
+  })
+
+  gulp.watch(GLOB.sassWatch, ['sass'])
+  gulp.watch(GLOB.pugWatch, ['pug']).on('change', browserSync.reload)
+})
 
 gulp.task('build', ['pug', 'sass', 'copy'])
 
@@ -47,6 +60,7 @@ gulp.task('sass', () => {
 	return gulp.src(GLOB.sass)
 		.pipe(sass())
 		.pipe(gulp.dest(DEST.sass))
+    .pipe(browserSync.stream())
 })
 
 gulp.task('copy', ['copyLibs'], () => {
