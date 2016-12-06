@@ -1,3 +1,5 @@
+$col-bg-header: #000;
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +7,7 @@
 
 html,
 body {
-  height: 100vh
+  height: 100vh;
 }
 
 body {
@@ -13,7 +15,32 @@ body {
   flex-direction: column;
 }
 
-.logo {
-  margin: auto;
-  width: 225px;
+// -------------- Header ---------------
+
+header {
+  background: $col-bg-header;
+  height: 100vh;
+  position: relative;
+}
+
+#header-background,
+.header-logo {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.header-logo {
+  display: flex;
+
+  .logo {
+    margin: auto;
+    width: 225px;
+  }
+}
+
+// --------------- Helpers ----------
+.flex-grow {
+  flex-grow: 1;
 }
