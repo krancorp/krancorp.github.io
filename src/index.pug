@@ -13,16 +13,39 @@ html
     link(rel='stylesheet' href='assets/css/style.css')
     include include/_favicons.pug
 
-  body
+  body 
     header
       #header-background
+      .nav
+          ul
+            li.nav-item: a(href="#") About
       .header-logo
         .flex-grow
-        .logo
-          svg(height='61.589mm' width='63.171mm')
-            path(
-               d="M 0.6969913,104.86304 29.701197,75.858833 70.761098,116.91876 71.51322,34.046835 105.18852,0.37153475 104.28595,107.80225 l 118.956,-0.52476 -36.31209,36.31209 -89.047256,0.45494 44.296046,44.29611 -29.00421,29.00421 L 0.69853504,104.86888 Z" style="fill:#fff")
+        img.logo(src='assets/img/k.svg')
         .flex-grow
+    
+    .row.white.padding
+      .container.columns.
+        Lorem ipsum dolor sit amet, <b>consetetur</b> sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
+        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. 
+    .row.black.padding
+      .container
+        h1 What people say about us
+        .flex
+          .quote
+            .text Die Kranplätze waren schon immer ausgezeichnet verdichtet. Dieser Firma kann man vertrauen!
+            .author Ronny, Kranführer
+          .quote
+            .text Mit denen schmiert nix mehr! Und hinterher sieht das keiner mehr dass die JavaScript genommen haben.
+            .author Detlef, Kleingärtner
+    .row.white.padding
+      .container.
+        Test
+    
+    .row.black
+      .footer-logo: img(src='assets/img/k.svg')
+
 
     script(src='assets/libs/jquery.min.js')
     script(src='assets/libs/two.min.js')

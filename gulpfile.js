@@ -22,7 +22,7 @@ const GLOB = {
   sass: PATH.assets + '/sass/style.scss',
   sassWatch: PATH.assets + '/sass/**/*.scss',
   js: PATH.assets + '/js/**/*.js',
-  copy: ['./src/CNAME', './src/**/*.?(png|ico|js)']
+  copy: ['./src/CNAME', './src/**/*.?(png|ico|js|svg)']
 }
 
 const DEST = {
@@ -37,7 +37,7 @@ const LIBS = [
 
 gulp.task('default', ['build'])
 
-gulp.task('watch', () => {
+gulp.task('watch', ['build'], () => {
 
   browserSync.init({
     server: './dist'
