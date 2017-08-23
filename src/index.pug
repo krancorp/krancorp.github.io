@@ -58,3 +58,17 @@ html
     script(src='assets/libs/jquery.min.js')
     script(src='assets/libs/two.min.js')
     script(src='assets/js/krancorp.js')
+    script.
+      (() => {
+        $nav = $('.nav')
+        top = true;
+        $(document).scroll(() => {
+          if ($(document).scrollTop() > 5 && top) {
+            $nav.addClass("scrolled")
+            top = false
+          } else {
+            $nav.removeClass("scrolled")
+            top = true;
+          }
+        })
+      })()
