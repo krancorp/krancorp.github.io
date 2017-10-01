@@ -15,15 +15,90 @@ html
 
   body
     header
+      .nav
+        span.brand KranCorp
+        ul
+          li.nav-item: a(href="#") About
+          li.nav-item: a(href="#") Products
       #header-background
       .header-logo
         .flex-grow
-        .logo
-          svg(height='61.589mm' width='63.171mm')
-            path(
-               d="M 0.6969913,104.86304 29.701197,75.858833 70.761098,116.91876 71.51322,34.046835 105.18852,0.37153475 104.28595,107.80225 l 118.956,-0.52476 -36.31209,36.31209 -89.047256,0.45494 44.296046,44.29611 -29.00421,29.00421 L 0.69853504,104.86888 Z" style="fill:#fff")
+        img.logo(src='assets/img/k.svg')
         .flex-grow
+
+    .row.white.padding
+      .container
+        h1 Why we are here
+        .columns
+          | At the beginning of every endeavour there is an idea, a vision of what you wish to accomplish.
+          | It may not be obvious at first, but it is there, a force driving you forward. In our case this idea is to just <i>get going</i>
+          | and assist others in doing the same. Personally, I find little as frustrating as getting stuck in a routine of
+          | exhausting idleness. In retrospect it is clear to me that we founded KranCorp to combat this dizzying stagnation.
+          | It has become a place of growth, of relentless trying and innovating, a playground for our ideas and ambitions.
+          | And we are eager to share our passion and enjoyment with you - just look around and make yourself at home.
+        span.author @brecher, CEO of KranCorp
+    .row.black.padding
+      .container
+        h1 What people say about us
+        .flex
+          .quote
+            .text Die Kranplätze waren schon immer ausgezeichnet verdichtet. Dieser Firma kann man vertrauen!
+            .author Ronny, Kranführer
+          .quote
+            .text Die haben sie zwar nicht mehr alle, aber die wissen sich zu helfen!
+            .author Detlef, Kleingärtner
+    .row.white.padding
+      .container
+        h1 Our philosophy
+        .columns
+          | How do you write great software? How do you make sure you meet your own high standards, and what should be the mindset of your developers?
+          | To us here at KranCorp the answer is simple: Programming is a craft,
+          | fueled by the passion and devotion of those who exercise it. All our products are superb for all the same reason - because we believe in them,
+          | because we pour all our heart and long-acquired knowledge into them. Our goal is not to produce a commodity, but to still a desire for perfection.
+          | In the end it does not really matter if it was the stroke of a brush or a key that lead to the art of its result, and after all that is what we are striving for.
+
+    .row.black.padding
+      .container
+        h1 Also our philosophy
+        |Der Kaiser – so heißt es – hat dir, dem Einzelnen, dem jämmerlichen Untertanen,
+        |dem winzig vor der kaiserlichen Sonne in die fernste Ferne geflüchteten Schatten, gerade dir hat der Kaiser
+        |von seinem Sterbebett aus eine Botschaft gesendet. Den Boten hat er beim Bett niederknien lassen und ihm
+        |die Botschaft ins Ohr geflüstert; so sehr war ihm an ihr gelegen, daß er sich sie noch ins Ohr wiedersagen ließ.
+        |Durch Kopfnicken hat er die Richtigkeit des Gesagten bestätigt. Und vor der ganzen Zuschauerschaft seines Todes
+        |– alle hindernden Wände werden niedergebrochen und auf den weit und hoch sich schwingenden Freitreppen stehen
+        |im Ring die Großen des Reichs – vor allen diesen hat er den Boten abgefertigt. Der Bote hat sich gleich auf
+        |den Weg gemacht; ein kräftiger, ein unermüdlicher Mann; einmal diesen, einmal den andern Arm vorstreckend
+        |schafft er sich Bahn durch die Menge; findet er Widerstand, zeigt er auf die Brust, wo das Zeichen der Sonne ist;
+        |er kommt auch leicht vorwärts, wie kein anderer. Aber die Menge ist so groß; ihre Wohnstätten nehmen kein Ende.
+        |Öffnete sich freies Feld, wie würde er fliegen und bald wohl hörtest du das herrliche Schlagen seiner Fäuste
+        | an deiner Tür. Aber statt dessen, wie nutzlos müht er sich ab; immer noch zwängt er sich durch die Gemächer
+        |des innersten Palastes; niemals wird er sie überwinden; und gelänge ihm dies, nichts wäre gewonnen;
+        |die Treppen hinab müßte er sich kämpfen; und gelänge ihm dies, nichts wäre gewonnen;
+        |die Höfe wären zu durchmessen; und nach den Höfen der zweite umschließende Palast;
+        |und wieder Treppen und Höfe; und wieder ein Palast; und so weiter durch Jahrtausende; und
+        |stürzte er endlich aus dem äußersten Tor – aber niemals, niemals kann es geschehen -,
+        |liegt erst die Residenzstadt vor ihm, die Mitte der Welt, hochgeschüttet voll ihres Bodensatzes.
+        |Niemand dringt hier durch und gar mit der Botschaft eines Toten. – Du aber sitzt an deinem Fenster und
+        |erträumst sie dir, wenn der Abend kommt.
+
+    .row.black
+      .footer-logo: img(src='assets/img/k.svg')
+
 
     script(src='assets/libs/jquery.min.js')
     script(src='assets/libs/two.min.js')
     script(src='assets/js/krancorp.js')
+    script.
+      (() => {
+        $nav = $('.nav')
+        top = true;
+        $(document).scroll(() => {
+          if ($(document).scrollTop() > 5 && top) {
+            $nav.addClass("scrolled")
+            top = false
+          } else {
+            $nav.removeClass("scrolled")
+            top = true;
+          }
+        })
+      })()
