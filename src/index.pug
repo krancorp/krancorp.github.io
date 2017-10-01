@@ -19,7 +19,7 @@ html
         span.brand KranCorp
         ul
           li.nav-item: a(href="#") About
-          li.nav-item: a(href="#") Products
+          li.nav-item: a(href="#products") Products
       #header-background
       .header-logo
         .flex-grow
@@ -49,9 +49,11 @@ html
             .author Detlef, Kleingärtner
     .row.white.padding
       .container
+        a(name="products")
         h1 Our product - the RonnyBot
         .product-icon
-          a(target="_blank" href="https://github.com/krancorp/ronny-bot"): img(src="./assets/img/ronny_western.png" alt="Check out RonnyBot on GitHub")
+          a(target="_blank" href="https://github.com/krancorp/ronny-bot"): img(src="./assets/img/ronny_western.png" alt="Check out RonnyBot on GitHub" title="Ich höre!")
+          | Check it out on GitHub, it's 100% JavaScript!
     .row.black.padding
       .container
         h1 Our philosophy
