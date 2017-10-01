@@ -139,14 +139,19 @@ header {
     font-size: 1.5em;
     margin-bottom: 1em;
   }
-
+  .product-icon {
+    img {
+      width: auto;
+      display: block;
+      margin: 0 auto;
+    }
+  }
   .author {
     position: absolute;
     font-weight: bold;
     right: 2em;
     margin-top: .5em;
   }
-
   .quote {
     position: relative;
     margin: 2.5em 1.5em;
@@ -177,7 +182,7 @@ header {
 
 .flex {
   display: flex;
-  
+
   @include responsive(s) {
     flex-direction: column;
   }
