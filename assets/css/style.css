@@ -77,9 +77,13 @@ header {
     color: black;
     background: white;
     box-shadow: inset 0 0 50px 0 #ccc; }
+    .row.white a {
+      color: black; }
   .row.black {
     color: white;
     background: black; }
+    .row.black a {
+      color: white; }
   .row.padding {
     padding: 3rem 2rem; }
 
