@@ -25,13 +25,17 @@ $(document).ready(() => {
   var stripPaths = []
   // Populate strips
   for (var i = 0; i < stripCount; i++) {
-    strips.push({x: (i * kSize + kSize/2), y: -Math.floor(Math.random()*canvas.height()/kSize/2) * kSize + kSize/2, v: randomVelocity()})
+    strips.push({
+      x: (i * kSize + kSize / 2),
+      y: -Math.floor(Math.random() * canvas.height() / kSize / 2) * kSize + kSize / 2,
+      v: randomVelocity()
+    })
 
     // Create K Paths
     var ks = []
     for (var j = 0; j < stripLength; j++) {
       var k = kPath.clone()
-      k.fill = 'rgba(255,255,255,'+0.15/j+')'
+      k.fill = 'rgba(255,255,255,' + 0.15 / j + ')'
       ks.push(k)
     }
     ks[0].fill = 'rgba(255,255,255,0.25)'
@@ -48,16 +52,16 @@ $(document).ready(() => {
       if (frameCount % strip.v === 0) {
         var paths = stripPaths[i];
 
-        for (var j = stripLength-1; j >= 0; j--) {
-          paths[j].translation.set(strip.x, strip.y - j*stripPadding)
+        for (var j = stripLength - 1; j >= 0; j--) {
+          paths[j].translation.set(strip.x, strip.y - j * stripPadding)
         }
         //console.log(strip)
         //console.log(path)
         //path.translation.set(strip.x, strip.y)
 
         strip.y += stripPadding
-        if (strip.y > canvas.height() + stripLength*kSize) {
-          strip.y = kSize/2
+        if (strip.y > canvas.height() + stripLength * kSize) {
+          strip.y = kSize / 2
           strip.v = randomVelocity()
         }
       }
@@ -71,6 +75,21 @@ $(document).ready(() => {
   }
 
   function randomVelocity() {
-    return Math.floor(Math.random()*stripSpeed)+stripMinSpeed
+    return Math.floor(Math.random() * stripSpeed) + stripMinSpeed
   }
+
+  var $root = $('html, body');
+
+  $('a[href^="#"]').click(function () {
+    $root.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function () {
+      $root.stop();
+    });
+    $root.animate({
+      scrollTop: $($.attr(this, 'href')).offset().top
+    }, 500, function () {
+      $root.off("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove");
+    });
+
+    return false;
+  });
 })

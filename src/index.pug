@@ -14,11 +14,12 @@ html
     include include/_favicons.pug
 
   body
+    span(id="top")
     header
       .nav
-        span.brand KranCorp
+        a(href="#top"): span.brand KranCorp
         ul
-          li.nav-item: a(href="#") About
+          li.nav-item: a(href="#about") About
           li.nav-item: a(href="#products") Products
       #header-background
       .header-logo
@@ -28,6 +29,7 @@ html
 
     .row.white.padding
       .container
+        span.anchor(id="about")
         h1 Why we are here
         .columns
           | At the beginning of every endeavour there is an idea, a vision of what you wish to accomplish.
