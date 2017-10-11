@@ -194,3 +194,9 @@ header {
     flex-direction: column;
   }
 }
+.anchor{
+  display: block;
+  height: calc(4.2rem + 44px); //3rem: row top padding, 1.2rem: nav font size, 44px: nav padding + solid border bottom
+  margin-top: (calc(-4.2rem - 44px));
+  visibility: hidden;
+}
