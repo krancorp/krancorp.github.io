@@ -137,3 +137,9 @@ header {
   @media only screen and (max-width: 830px) {
     .flex {
       flex-direction: column; } }
+
+.anchor {
+  display: block;
+  height: calc(4.2rem + 44px);
+  margin-top: calc(-4.2rem - 44px);
+  visibility: hidden; }
