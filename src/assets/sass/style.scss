@@ -48,7 +48,15 @@ body {
     border-bottom: 3px solid white;
   }
 
-  .brand {
+  .brand-logo {
+    float: left;
+    height: 1.3em;
+    margin-right: .5em;
+    transition: max-width 150ms linear;
+    max-width: 0;
+  }
+
+  .brand-text {
     float: left;
   }
 }
