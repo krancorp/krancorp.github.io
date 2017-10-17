@@ -17,7 +17,9 @@ html
     span(id="top")
     header
       .nav
-        a(href="#top"): span.brand KranCorp
+        a(href="#top")
+          img.brand-logo(src='assets/img/k.svg')
+          span.brand-text KranCorp
         ul
           li.nav-item: a(href="#about") About
           li.nav-item: a(href="#products") Products
@@ -90,19 +92,27 @@ html
     script(src='assets/libs/two.min.js')
     script(src='assets/js/krancorp.js')
     script.
-      (() => {
-        $nav = $('.nav')
-        top = true;
+      $(document).ready(() => {
+        const $nav = $('.nav')
+        const $brandLogo = $('.brand-logo')
+        $brandLogo.css('max-width', '0')
+        const fallingHeight = $('header').height()
+        console.debug("falling: ", fallingHeight)
         $(document).scroll(() => {
-          if ($(document).scrollTop() > 5 && top) {
+          const scrollTop = $(document).scrollTop()
+          console.debug("top:", scrollTop)
+          if (scrollTop > 5) {
             $nav.addClass("scrolled")
-            top = false
           } else {
             $nav.removeClass("scrolled")
-            top = true;
+          }
+          if (scrollTop > fallingHeight) {
+            $brandLogo.css('max-width', '2em')
+          } else {
+            $brandLogo.css('max-width', '0')
           }
         })
-      })()
+      })
 
   .row.black
     .footer-logo: img(src='assets/img/k.svg')
