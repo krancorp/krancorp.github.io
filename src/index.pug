@@ -95,12 +95,9 @@ html
       $(document).ready(() => {
         const $nav = $('.nav')
         const $brandLogo = $('.brand-logo')
-        $brandLogo.css('max-width', '0')
         const fallingHeight = $('header').height()
-        console.debug("falling: ", fallingHeight)
         $(document).scroll(() => {
           const scrollTop = $(document).scrollTop()
-          console.debug("top:", scrollTop)
           if (scrollTop > 5) {
             $nav.addClass("scrolled")
           } else {
